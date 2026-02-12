@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bewerbungsapp</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">B</div>
+          <div>
+            <h1>Bewerbungsapp</h1>
+            <p>Deine Bewerbungen im Blick</p>
+          </div>
+        </div>
+        <div class="status-card">
+          <h2>Status</h2>
+          <div class="status-grid">
+            <div>
+              <span class="label">Offen</span>
+              <span id="count-open" class="value">0</span>
+            </div>
+            <div>
+              <span class="label">Positiv</span>
+              <span id="count-positive" class="value">0</span>
+            </div>
+            <div>
+              <span class="label">Negativ</span>
+              <span id="count-negative" class="value">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="hint-card">
+          <h2>Erinnerungen</h2>
+          <p>Erinnerungen sind lokal gespeichert und erscheinen in der Liste. Benachrichtigungen folgen später.</p>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="header">
+          <div>
+            <h2>Übersicht</h2>
+            <p>Verwalte Anschreiben, Antworten und Erinnerungen an einem Ort.</p>
+          </div>
+          <div class="header-actions">
+            <select id="theme-select" aria-label="Theme auswählen">
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+              <option value="midnight">Midnight</option>
+            </select>
+            <button id="new-btn" class="primary">Neue Bewerbung</button>
+          </div>
+        </header>
+
+        <section class="grid">
+          <div class="card form-card">
+            <h3>Bewerbung</h3>
+            <form id="application-form">
+              <div class="form-row">
+                <label for="company">Unternehmen</label>
+                <input id="company" name="company" type="text" placeholder="z. B. Muster GmbH" required />
+              </div>
+              <div class="form-row">
+                <label for="applicationDate">Datum der Bewerbung</label>
+                <input id="applicationDate" name="applicationDate" type="date" required />
+              </div>
+              <div class="form-row">
+                <label for="sentVia">Versandweg</label>
+                <select id="sentVia" name="sentVia" required>
+                  <option value="email">E-Mail</option>
+                  <option value="website">Website/Portal</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="responseStatus">Antwortstatus</label>
+                <select id="responseStatus" name="responseStatus" required>
+                  <option value="offen">Offen</option>
+                  <option value="positiv">Positiv</option>
+                  <option value="negativ">Negativ</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="reminderAt">Erinnerung</label>
+                <input id="reminderAt" name="reminderAt" type="datetime-local" />
+              </div>
+              <div class="form-row">
+                <label for="coverLetter">Anschreiben</label>
+                <textarea id="coverLetter" name="coverLetter" rows="4" placeholder="Kurztext oder Notizen"></textarea>
+              </div>
+              <div class="form-row">
+                <label for="companyResponse">Antwort des Unternehmens</label>
+                <textarea id="companyResponse" name="companyResponse" rows="3" placeholder="Antwort, Rückmeldung, Notizen"></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary" id="save-btn">Speichern</button>
+                <button type="button" class="secondary" id="reset-btn">Zurücksetzen</button>
+                <button type="button" class="danger" id="delete-btn" disabled>Löschen</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card list-card">
+            <div class="list-header">
+              <h3>Bewerbungen</h3>
+              <input id="search" type="search" placeholder="Suchen nach Unternehmen" />
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Unternehmen</th>
+                    <th>Datum</th>
+                    <th>Status</th>
+                    <th>Erinnerung</th>
+                    <th>Versand</th>
+                  </tr>
+                </thead>
+                <tbody id="applications-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

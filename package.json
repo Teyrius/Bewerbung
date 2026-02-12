@@ -1,0 +1,49 @@
+{
+  "name": "bewerbungsapp",
+  "version": "0.1.0",
+  "description": "Desktop-App zur Verwaltung von Bewerbungen",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "start:clean": "npm run rebuild && npm start",
+    "dist:win": "npm run rebuild && electron-builder --win nsis",
+    "dist:portable": "npm run rebuild && electron-builder --win portable",
+    "pack:win": "npm run rebuild && electron-packager . Bewerbungsapp --platform=win32 --arch=x64 --out=dist --overwrite"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.6.2"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.3",
+    "electron": "^35.7.5",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "appId": "de.bewerbungsapp.desktop",
+    "productName": "Bewerbungsapp",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    }
+  }
+}
