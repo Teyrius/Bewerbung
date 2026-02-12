@@ -22,6 +22,11 @@ Desktop-App zur Verwaltung von Bewerbungen. Lokal gespeichert, deutschsprachig, 
 - Für den empfohlenen Start nach Updates einfach verwenden: `npm run start:clean`
 - Falls nur ein manueller Rebuild nötig ist: `npm run rebuild`
 
+## Release (Windows)
+- Ein-Kommando-Release erstellen: `npm run release:win`
+- Ergebnis: versionierte ZIP im `dist`-Ordner, z. B. `Bewerbungsapp-v0.1.0-win64.zip`
+- Für die Weitergabe reicht diese ZIP-Datei.
+
 ## Troubleshooting
 - Fehler: `NODE_MODULE_VERSION mismatch`
 	- Ursache: Natives Modul wurde gegen eine andere Node-/Electron-ABI gebaut.

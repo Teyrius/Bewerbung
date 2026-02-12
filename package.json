@@ -9,7 +9,8 @@
     "start:clean": "npm run rebuild && npm start",
     "dist:win": "npm run rebuild && electron-builder --win nsis",
     "dist:portable": "npm run rebuild && electron-builder --win portable",
-    "pack:win": "npm run rebuild && electron-packager . Bewerbungsapp --platform=win32 --arch=x64 --out=dist --overwrite"
+    "pack:win": "npm run rebuild && electron-packager . Bewerbungsapp --platform=win32 --arch=x64 --out=dist --overwrite",
+    "release:win": "npm run pack:win && powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/release-win.ps1"
   },
   "author": "",
   "license": "MIT",
